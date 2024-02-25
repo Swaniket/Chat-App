@@ -1,0 +1,13 @@
+.login-screen-styles {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-styles {
+  width: 90rem;
+  padding: 55px;
+  border: none !important;
+  box-shadow: none !important;
+}

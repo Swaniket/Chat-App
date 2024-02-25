@@ -1,18 +1,20 @@
+import { Card } from "react-bootstrap";
 import Splitscreen from "../../layout/SplitScreen";
 import { LoginForm } from "../../components";
 import { SvgRenderer } from "../../shared";
 import loginImage from "../../assets/login.svg";
-
-export const AvatarComponent = () => {
-  return <h1>Hellow World</h1>;
-};
+import "./index.css";
 
 function Login() {
   return (
-    <Splitscreen>
-      <SvgRenderer svgImage={loginImage} />
-      <LoginForm />
-    </Splitscreen>
+    <div className="login-screen-styles">
+      <Card className="card-styles">
+        <Splitscreen>
+          <SvgRenderer svgImage={loginImage} />
+          <LoginForm />
+        </Splitscreen>
+      </Card>
+    </div>
   );
 }
 

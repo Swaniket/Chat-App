@@ -2,6 +2,7 @@ import { Card, Form, FloatingLabel, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import "./index.css";
 
 const schema = z.object({
   email: z
@@ -26,8 +27,8 @@ function LoginForm() {
   };
 
   return (
-    <Card>
-      <Card.Header>Login</Card.Header>
+    <>
+      <h1 className="header-style">Login</h1>
       <Card.Body>
         <Form onSubmit={handleSubmit(onSubmit)} noValidate>
           <Form.Group className="mb-3" controlId="password">
@@ -71,7 +72,7 @@ function LoginForm() {
           </div>
         </Form>
       </Card.Body>
-    </Card>
+    </>
   );
 }
 
