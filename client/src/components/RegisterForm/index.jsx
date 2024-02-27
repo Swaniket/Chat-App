@@ -1,12 +1,11 @@
-/* eslint-disable react/no-unescaped-entities */
-import { Card, Form, FloatingLabel, Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema } from "./schema";
-import "./index.css";
+import { useForm } from "react-hook-form";
 
-function LoginForm() {
+import { Card, Form, FloatingLabel, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { schema } from "./schema";
+
+function RegisterForm() {
   const navigate = useNavigate();
   const {
     register,
@@ -23,10 +22,24 @@ function LoginForm() {
 
   return (
     <>
-      <h1 className="header-style">Login</h1>
+      <h1 className="header-style">Register</h1>
       <Card.Body>
         <Form onSubmit={handleSubmit(onSubmit)} noValidate>
-          {/* Email Field */}
+          {/* Name */}
+          <Form.Group className="mb-3" controlId="Name">
+            <FloatingLabel controlId="Name" label="Name" className="mb-3">
+              <Form.Control
+                {...register("name")}
+                type="text"
+                placeholder="Enter you name"
+              />
+            </FloatingLabel>
+            {errors.name && (
+              <div className="form-error-text">*{errors.name.message}</div>
+            )}
+          </Form.Group>
+
+          {/* Email */}
           <Form.Group className="mb-3" controlId="email">
             <FloatingLabel
               controlId="email"
@@ -44,7 +57,7 @@ function LoginForm() {
             )}
           </Form.Group>
 
-          {/* Password Field */}
+          {/* Password */}
           <Form.Group className="mb-3" controlId="password">
             <FloatingLabel
               controlId="password"
@@ -62,15 +75,34 @@ function LoginForm() {
             )}
           </Form.Group>
 
-          {/* Button Group */}
+          {/* Confirm Password */}
+          <Form.Group className="mb-3" controlId="confirmPassword">
+            <FloatingLabel
+              controlId="confirmPassword"
+              label="Confirm Password"
+              className="mb-3"
+            >
+              <Form.Control
+                {...register("confirmPassword")}
+                type="password"
+                placeholder="Confirm Password"
+              />
+            </FloatingLabel>
+            {errors.confirmPassword && (
+              <div className="form-error-text">
+                *{errors.confirmPassword.message}
+              </div>
+            )}
+          </Form.Group>
+
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button
               variant="link"
               onClick={() => {
-                navigate("/register");
+                navigate("/login");
               }}
             >
-              Register
+              Login
             </Button>
             <Button type="submit" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? "Loading..." : "Login"}
@@ -82,4 +114,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default RegisterForm;
