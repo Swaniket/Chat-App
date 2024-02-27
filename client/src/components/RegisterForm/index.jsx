@@ -95,6 +95,7 @@ function RegisterForm() {
             )}
           </Form.Group>
 
+          {/* Button Group */}
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button
               variant="link"

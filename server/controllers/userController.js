@@ -93,8 +93,12 @@ const loginUser = asyncHandler(async (req, res) => {
     if (user && (await comparePasswords(password, user.password))) {
       res.status(200).json(
         generateResponseBody("success", 200, "Login Successful", {
+          _id: user._id,
           name: user.name,
           email: user.email,
+          hasPremiumAccess: user.hasPremiumAccess,
+          isVerified: user.isVerified,
+          updatedAt: user.updatedAt,
           token: generateJWTToken(user.userId),
         })
       );
